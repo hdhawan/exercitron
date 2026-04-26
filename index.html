@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercitron — Your Personal Fitness Trainer</title>
+  <meta name="description" content="Exercitron builds custom workout plans for any gym or at home — for complete beginners to advanced athletes. Coming soon to iOS and Android." />
+  <meta property="og:title" content="Exercitron — Your Personal Fitness Trainer" />
+  <meta property="og:description" content="Train anywhere. Start today. Coming soon to iOS and Android." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d;
+      color: #f0ede8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header {
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: #e8f535; }
+
+    .coming-soon-badge {
+      background: #1e1e1e;
+      color: #888;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    /* HERO */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e8f535;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.0;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    h1 span { color: #e8f535; }
+
+    .subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: #888;
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .feature {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-icon { font-size: 15px; }
+
+    /* CTA */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #e8f535;
+      color: #000;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 18px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      transition: background 0.15s, transform 0.12s;
+    }
+
+    .cta-btn:hover {
+      background: #d4e020;
+      transform: translateY(-1px);
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .cta-note a {
+      color: #888;
+      text-decoration: underline;
+    }
+
+    /* STORES */
+    .stores {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .store-badge {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .store-badge-icon { font-size: 20px; }
+    .store-badge-text { line-height: 1.3; }
+    .store-badge-sub { font-size: 10px; color: #444; text-transform: uppercase; letter-spacing: 0.5px; }
+    .store-badge-name { font-size: 14px; font-weight: 700; color: #666; }
+
+    /* DIVIDER */
+    .divider {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, #2a2a2a, transparent);
+      margin: 0 auto 60px;
+    }
+
+    /* FEATURES GRID */
+    .features-section {
+      padding: 0 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .feature-card-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #f0ede8;
+    }
+
+    .feature-card-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo span { color: #e8f535; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: #888; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* PRIVACY SECTION */
+    .privacy-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .privacy-section h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .privacy-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #888;
+      margin: 20px 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 12px;
+    }
+
+    .privacy-section p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 20px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .footer-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">EXERCI<span>TRON</span></div>
+    <div class="coming-soon-badge">Coming Soon</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">Your Personal Fitness Trainer</div>
+    <h1>Train anywhere.<br /><span>Start today.</span></h1>
+    <p class="subtitle">
+      Exercitron builds custom workout plans for any gym or at home —
+      for complete beginners to advanced athletes.
+    </p>
+
+    <!-- Feature pills -->
+    <div class="features">
+      <div class="feature"><span class="feature-icon">🏋️</span> Any gym or at home</div>
+      <div class="feature"><span class="feature-icon">🤸</span> All fitness levels</div>
+      <div class="feature"><span class="feature-icon">📸</span> AI form analysis</div>
+      <div class="feature"><span class="feature-icon">⚡</span> Instant workout plans</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-group">
+      <a href="mailto:hello@exercitron.com" class="cta-btn">
+        Notify Me When It Launches →
+      </a>
+      <p class="cta-note">
+        Questions? Email us at
+        <a href="mailto:hello@exercitron.com">hello@exercitron.com</a>
+      </p>
+    </div>
+
+    <!-- Store badges -->
+    <div class="stores" style="margin-top: 32px;">
+      <div class="store-badge">
+        <div class="store-badge-icon">🍎</div>
+        <div class="store-badge-text">
+          <div class="store-badge-sub">Coming to</div>
+          <div class="store-badge-name">App Store</div>
+        </div>
+      </div>
+      <div class="store-badge">
+        <div class="store-badge-icon">▶</div>
+        <div class="store-badge-text">
+          <div class="store-badge-sub">Coming to</div>
+          <div class="store-badge-name">Google Play</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES GRID -->
+  <section class="features-section">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card-icon">🏠</div>
+        <div class="feature-card-title">Home or Gym</div>
+        <div class="feature-card-desc">Works for Planet Fitness, Anytime Fitness, Gold's Gym, home workouts, hotel rooms, and everywhere in between.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">🤖</div>
+        <div class="feature-card-title">Personalised Plans</div>
+        <div class="feature-card-desc">Tell us your goal, your gym, and how much time you have. We build the perfect plan — no guesswork required.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">📸</div>
+        <div class="feature-card-title">AI Form Analysis</div>
+        <div class="feature-card-desc">Record a set. Get expert feedback on your technique — like having a personal trainer watch every rep.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">📈</div>
+        <div class="feature-card-title">Track Your Progress</div>
+        <div class="feature-card-desc">Every workout logged, every milestone tracked. See exactly how far you've come and where you're headed.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">🧘</div>
+        <div class="feature-card-title">Any Fitness Level</div>
+        <div class="feature-card-desc">Complete beginner or seasoned athlete — Exercitron meets you exactly where you are and grows with you.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">⚡</div>
+        <div class="feature-card-title">Quick Sessions</div>
+        <div class="feature-card-desc">10, 20, or 30 minute sessions. No time? No problem. Exercitron fits into your schedule, not the other way around.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section class="privacy-section" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Last updated: April 25, 2026</p>
+    <p>Exercitron LLC ("we", "us", or "our") operates the Exercitron mobile application and website. This page informs you of our policies regarding the collection, use, and disclosure of personal data.</p>
+
+    <h3>Information We Collect</h3>
+    <p>We collect information you provide directly to us, including name, email address, age, fitness goals, and workout data. We also collect usage data to improve the app experience.</p>
+
+    <h3>How We Use Your Information</h3>
+    <p>We use your information to provide and improve our services, generate personalised workout plans, and communicate with you about your account and our products.</p>
+
+    <h3>Data Storage</h3>
+    <p>Your data is stored securely using Google Firebase infrastructure. We do not sell your personal information to third parties.</p>
+
+    <h3>Health Disclaimer</h3>
+    <p>Exercitron is not a medical service. Content provided is for informational purposes only and is not a substitute for professional medical advice. Consult a physician before beginning any exercise program.</p>
+
+    <h3>Contact Us</h3>
+    <p>For privacy-related questions, contact us at <a href="mailto:hello@exercitron.com" style="color:#888;">hello@exercitron.com</a></p>
+  </section>
+
+  <!-- TERMS OF SERVICE -->
+  <section class="privacy-section" id="terms" style="border-top: 1px solid #1e1e1e;">
+    <h2>Terms of Service</h2>
+    <p>Last updated: April 25, 2026</p>
+    <p>By using Exercitron you agree to these terms. Exercitron LLC provides a fitness planning application for informational and entertainment purposes.</p>
+
+    <h3>Subscriptions</h3>
+    <p>Exercitron offers free and paid subscription tiers. Paid subscriptions are billed monthly and can be cancelled at any time through your App Store or Google Play account settings. No refunds are provided for partial months.</p>
+
+    <h3>Health Disclaimer</h3>
+    <p>Exercitron is not a medical service. We are not responsible for any injuries that may result from following workout plans generated by our app. Always consult a qualified healthcare professional before starting a new exercise program.</p>
+
+    <h3>Limitation of Liability</h3>
+    <p>Exercitron LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of our services.</p>
+
+    <h3>Contact</h3>
+    <p>Questions about these terms? Email <a href="mailto:hello@exercitron.com" style="color:#888;">hello@exercitron.com</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">EXERCI<span>TRON</span></div>
+    <div class="footer-links">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="mailto:hello@exercitron.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Exercitron LLC. All rights reserved. Exercitron LLC, New Jersey, USA.</div>
+  </footer>
+
+</body>
+</html>
